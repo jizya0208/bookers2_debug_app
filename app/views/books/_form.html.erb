@@ -1,4 +1,5 @@
 <%= form_with model:book,local:true do |f| %>
+<%= render 'layouts/errors', obj: f.object %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control book_title' %>
