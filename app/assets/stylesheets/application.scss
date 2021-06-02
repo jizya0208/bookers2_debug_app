@@ -37,3 +37,15 @@ div {
     margin-bottom: 10px;
   }
 }
+
+a {
+  text-decoration: none;
+}
+
+#red > a {
+  color: red;
+}
+
+#blue > a {
+  color: blue;
+}
