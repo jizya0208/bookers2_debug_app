@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
-   # @books = Book.where(user_id: @user)
     @book = Book.new
     @relationship = current_user.relationships.new
   end

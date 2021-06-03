@@ -7,6 +7,11 @@
       <%= render 'books/form', book: @book %>
     </div>
     <div class='col-md-8 offset-md-1'>
+    <%= form_with(url: search_users_path, method: :get, local: true) do |f| %>
+      <%= f.text_field :keyword %>
+      <%= f.submit '検索' %>
+    <% end %>  
+    
       <h2>Users</h2>
       <%= render 'index',users: @users %>
     </div>
