@@ -1,0 +1,5 @@
+$(".favorite_btn").html("<%= escape_javascript(render partial: 'favorites/favorite_btn', locals: {book: @book}) %>");
+
+$("#favorite_btn-<%= @book.id %>").html("<%= escape_javascript(render partial: 'favorites/favorite_btn', locals: {book: @book}) %>");
+
+
