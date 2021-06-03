@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @books = @user.books
    # @books = Book.where(user_id: @user)
     @book = Book.new
+    @relationship = current_user.relationships.new
   end
 
   def index
