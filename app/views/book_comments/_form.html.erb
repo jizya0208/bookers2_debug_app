@@ -1,0 +1,4 @@
+<%= form_with(model:[book, book_comment]) do |f| %>    <!--local: trueが非同期通信-->
+  <%= f.text_area :comment, rows:'5', class:"col-md-12" %>
+  <%= f.submit "送信" %>
+<% end %>

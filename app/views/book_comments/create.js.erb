@@ -1,0 +1,4 @@
+$('.book_comment_form textarea').val('');
+<!--コメント送信後、フォーム入力欄を空にする-->
+
+$('.book_comment_index').html("<%= escape_javascript(render partial: 'book_comments/index', locals: {book: @book}) %>");

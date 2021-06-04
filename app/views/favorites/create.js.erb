@@ -1,6 +1,7 @@
-$(".favorite_btn").html("<%= escape_javascript(render partial: 'favorites/favorite_btn', locals: {book: @book}) %>");
+$(".favorite_btn").html("<%= escape_javascript(render partial: 'favorites/favorite_btn', locals: {book: @book}) %>");　
+<!--指定したクラスの中身(HTML)を置き換える-->
 
 $("#favorite_btn-<%= @book.id %>").html("<%= escape_javascript(render partial: 'favorites/favorite_btn', locals: {book: @book}) %>");
-
+<!--指定したidの中身(HTML)を置き換える-->
 
 

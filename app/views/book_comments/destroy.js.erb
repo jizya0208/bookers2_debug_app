@@ -1,0 +1,3 @@
+$("#comment-<%= @book_comment.id %>").remove();
+
+$('.book_comment_index').html("<%= escape_javascript(render partial: 'book_comments/index', locals: {book: @book}) %>");
