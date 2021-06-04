@@ -9,7 +9,8 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
-    @books = Book.all
+    one_week_ago = Date.today - 7
+    @books = Book.where("created_at > ?", one_week_ago).sort {|a,b| b.favorites.size <=> a.favorites.size}
   end
 
   def create
