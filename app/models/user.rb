@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower  #ここで、フォロワーの一覧を定義
   
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  
+  
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end

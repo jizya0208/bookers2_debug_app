@@ -1,0 +1,22 @@
+<h3><%= @name %>さんとのチャット</h3>
+
+<div class="container">
+<% if @messages.exists? %>
+  <% @messages.each do |message| %>
+    <% if message.user.name == @name %>
+      <div>
+        <p><%= message.content %></p>
+      </div>
+    <% else %>
+      <div class="col-lg-12 offset-4 row">
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= form_with model:@message, type:"text", local: true do |f| %>
+  <%= f.text_field :content, autofocus: true %>
+  <%= f.hidden_field :room_id, :value => @room.id %>
+<% end%>
+</div>
