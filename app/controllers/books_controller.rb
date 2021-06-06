@@ -5,6 +5,22 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @new_book = Book.new
     @book_comment = BookComment.new
+    now = Time.current
+    from = now.at_beginning_of_day
+    to = from + 1.day
+    yesterday = now.yesterday.at_beginning_of_day
+    this_week = from - 6.day
+    last_week = this_week - 7.day
+    @book_today = Book.where("created_at > ?", from ).where("created_at < ?", to ).size
+    @book_yesterday = Book.where("created_at > ?", yesterday).where("created_at < ?", from ).size
+    unless @book_yesterday == 0 
+      @previous_day_ratio = @book_today / @book_yesterday * 100
+    end
+    @book_this_week = Book.where("created_at > ?", this_week ).where("created_at < ?", now).size
+    @book_last_week = Book.where("created_at > ?", last_week ).where("created_at < ?", this_week).size
+    unless @book_last_week == 0 
+      @previous_week_ratio = @book_this_week / @book_last_week * 100
+    end
   end
 
   def index
