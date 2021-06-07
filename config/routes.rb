@@ -9,13 +9,14 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
+  resources :groups
+  
   resources :books do
     resources :book_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
   root 'homes#top'
   get 'home/about' => 'homes#about'
-  
   get '/search', to: 'search#search'
   
 end
