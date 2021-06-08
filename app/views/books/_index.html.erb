@@ -25,17 +25,30 @@
           コメント数：<%= book.book_comments.count %>
         </td>
         <td class="book_rate", data-score="<%= book.rate %>"></td>
+        
+        <td id="rate_<%= book.id %>"></td>
+          <script>
+          $('#rate_<%= book.id %>').raty({
+            size: 20,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= book.rate %>,
+          });
+          </script>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<script>
-  $('.book_rate').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-</script>
+<!--<script>-->
+<!--  $('.book_rate').raty({-->
+<!--    readOnly: true,-->
+<!--    score: function() {-->
+<!--      return $(this).attr('data-score');-->
+<!--    },-->
+<!--    path: '/assets/'-->
+<!--  });-->
+<!--</script>-->
