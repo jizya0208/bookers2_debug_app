@@ -18,10 +18,7 @@
           <td><%= link_to @book.title, book_path(@book) %></td>
           <td><%= @book.body %></td>
           <% if @book.user_id === current_user.id %>
-          <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
-          <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
-          <% end %>
-          
+          <td class="book_rate", data-score="<%= @book.rate %>"></td>
           <td class="favorite_btn">
             <%= render 'favorites/favorite_btn', book: @book %>
           </td>
@@ -29,6 +26,13 @@
           <td id="comment_count_<%= @book.id %>">
             コメント数：<%= @book.book_comments.count %>
           </td>
+          
+          <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
+          <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
+          <% end %>
+
+          
+          
         </tr>
       </table>
       
@@ -79,3 +83,14 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  $('.book_rate').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
