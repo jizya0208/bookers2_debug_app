@@ -13,13 +13,14 @@ class GroupsController < ApplicationController
   
   def new
     @group = Group.new
-    @group.users << current_user    #グループ作成者を加入
+    # @group.users << current_user    #グループ作成者を加入
   end
   
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
     if @group.save
+      @group_user = GroupUser.create(group_id: @group.id, user_id: current_user.id)
       redirect_to groups_path
     else
       render 'new'
@@ -47,4 +48,5 @@ class GroupsController < ApplicationController
     unless @group.owner_id == current_user.id
       redirect_to groups_path
     end
+  end
 end
